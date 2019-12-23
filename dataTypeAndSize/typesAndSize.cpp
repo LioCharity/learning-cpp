@@ -84,8 +84,8 @@ void dataTypesAndSize(){
     printDouble(aConstantDouble);
     
     // the following notation is preferred over #define to create symbolic constants macros.
-    constexpr int maxStudentsPerClass { 30 };
-    constexpr int maxNameLength { 30 };
+    //constexpr int maxStudentsPerClass { 30 };
+    //constexpr int maxNameLength { 30 };
 }
 
 // Making a function parameter const does 2 thing: It tells the person calling the
