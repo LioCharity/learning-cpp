@@ -1,0 +1,3 @@
+- The size of a pointer is always the same depending on the machine. For a 32 bits machine it will be always 4Bytes.
+- When initializing a pointer, use nullptr. 0 can be used as well.
+- C++11 also introduces a new type called std::nullptr_t (in header <cstddef>). std::nullptr_t can only hold one value: nullptr! While this may seem kind of silly, it’s useful in one situation. If we want to write a function that accepts only a nullptr argument, what type do we make the parameter? The answer is std::nullptr_t
