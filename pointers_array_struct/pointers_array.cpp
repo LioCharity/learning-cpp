@@ -53,6 +53,7 @@ void pointersAndStruct(){
     std::cout << "Traveler age: " << aTravelerPtr->age << '\n';
     
     delete aTravelerPtr;
+    aTravelerPtr = nullptr;
 }
 
 /*

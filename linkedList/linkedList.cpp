@@ -19,7 +19,14 @@ Student* initializeLinkedList(const std::string iStudentName, const int iStudent
 }
 
 void appendElement(Student* iStrudent, const std::string iStudentName, const int iStudentAge, const double iStudentGrade){
-    iStrudent->next = initializeLinkedList(iStudentName, iStudentAge, iStudentGrade);
+    Student* s{iStrudent};
+    while(s){
+        if(s->next == nullptr){
+            s->next = initializeLinkedList(iStudentName, iStudentAge, iStudentGrade);
+            break;
+        }
+        s = s->next;
+    }
 }
 
 Student* addElementToHead(Student* iStrudent, const std::string iStudentName, const int iStudentAge, const double iStudentGrade){
@@ -39,9 +46,10 @@ Student* addInPosition(Student* iStrudent, const std::string iStudentName, const
     int i{0};
     for(Student* s{iStrudent}; s != nullptr; s = s->next ){
         if(i == (position - 1)){
-            Student* next = s->next;
+            Student* next{s->next};
             s->next = aStudent;
             aStudent->next = next;
+            break;
         }
     }
     return iStrudent;
@@ -52,7 +60,7 @@ int listLength(const Student* iStrudent){
     for(const Student* s{iStrudent}; s != nullptr; s = s->next ){
         ++count;
     }
-    return count + 1;
+    return count;
 }
 
 Student* getElementAtPosition(Student* iStudent, const int position){

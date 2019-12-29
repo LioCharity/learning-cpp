@@ -7,6 +7,7 @@
 //
 
 #include <iostream>
+
 #include "utils/utils.hpp"
 #include "iostream/console_input_output.hpp"
 #include "conditionalCompilationAndMacro/conditionalCompilationAndMacros.hpp"
@@ -15,14 +16,17 @@
 #include "arraySorting/selectionSort.hpp"
 #include "arraySorting/quickSort.hpp"
 #include "pointers_array_struct/pointers_array.hpp"
+#include "pointers_array_struct/iterators.hpp"
 #include "linkedList/linkedList.hpp"
+#include "forEachAndReferences/forEachAndReferences.hpp"
 
 //#define CONSOLE_IO
 //#define CONDITIONAL_COMPILE_AND_MACRO
 //#define TYPE_AND_SIZE
 //#define ARRAY_SORTING
 //#define POINTERS
-#define LINKED_LIST
+//#define LINKED_LIST
+#define FOR_EACH_REFERENCES
 
 int main(int argc, const char * argv[]) {
     
@@ -74,16 +78,21 @@ int main(int argc, const char * argv[]) {
         delete[] arrayOfName;
     }
 
+    loopOverArrays();
 #endif
     
 #ifdef LINKED_LIST
     Student* aStudentList{initializeLinkedList("lionel", 18, 29)};
+    std::cout << "List length after init: " << listLength(aStudentList) << '\n';
     appendElement(aStudentList, "brice",18, 30);
+    std::cout << "List length after append: " << listLength(aStudentList) << '\n';
     
     aStudentList = addInPosition(aStudentList, "souop", 18, 25, 1);
+    std::cout << "List length after add in position 1: " << listLength(aStudentList) << '\n';
     std::cout << "Element in position 1: " << aStudentList->next->name << '\n';
     
     aStudentList = addInPosition(aStudentList, "Ahmed", 18, 25, 0);
+    std::cout << "List length after add in position 0: " << listLength(aStudentList) << '\n';
     std::cout << "Element in position 0: " << aStudentList->name << '\n';
     
     Student* aStudent{getElementAtPosition(aStudentList, 1)};
@@ -92,6 +101,7 @@ int main(int argc, const char * argv[]) {
     aStudent = nullptr;
     
     aStudentList = deleteElementAtPosition(aStudentList, 1);
+    std::cout << "List length after delete element in position 1: " << listLength(aStudentList) << '\n';
     aStudent = getElementAtPosition(aStudentList, 1);
     std::cout << "Get element at position 1: " << aStudent->name << '\n';
     
@@ -108,6 +118,13 @@ int main(int argc, const char * argv[]) {
     
     // delete
     
+#endif
+    
+#ifdef FOR_EACH_REFERENCES
+    if(doesNameExist())
+        std::cout << "\nThe name is exists!\n";
+    else
+        std::cout << "\nThe name does not exist!\n";
 #endif
     
     return 0;
